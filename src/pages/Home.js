@@ -288,6 +288,7 @@ function Home() {
           <NavItem><NavLink to="/about">Sobre</NavLink></NavItem>
           <NavItem><NavLink to="/contato">Contato</NavLink></NavItem>
           <NavItem><NavLink to="/cadastro">Cadastro</NavLink></NavItem>
+          <NavItem><NavLink to="/login">Login</NavLink></NavItem>
         </NavList>
         <MobileMenuButton onClick={toggleMobileMenu} aria-label="Abrir menu de navegação">
           ☰
