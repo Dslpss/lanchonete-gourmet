@@ -285,6 +285,7 @@ function Home() {
         <NavList>
           <NavItem><NavLink to="/">Home</NavLink></NavItem>
           <NavItem><NavLink to="/menu">Menu</NavLink></NavItem>
+          <NavItem><NavLink to="/about">Sobre</NavLink></NavItem>
           <NavItem><NavLink to="/contato">Contato</NavLink></NavItem>
           <NavItem><NavLink to="/cadastro">Cadastro</NavLink></NavItem>
         </NavList>
