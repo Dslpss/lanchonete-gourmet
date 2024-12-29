@@ -11,6 +11,7 @@ import Home from './pages/Home';
 import Menu from './pages/Menu';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import Register from './pages/Register';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/menu" element={<Menu />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/register" element={<Register />} />
           </Routes>
           <Footer />
         </Router>

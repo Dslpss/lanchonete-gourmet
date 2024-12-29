@@ -86,6 +86,7 @@ function Header() {
           <NavLink to="/menu" onClick={handleLinkClick}>Menu</NavLink>
           <NavLink to="/about" onClick={handleLinkClick}>Sobre</NavLink>
           <NavLink to="/contact" onClick={handleLinkClick}>Contato</NavLink>
+          <NavLink to="/register" onClick={handleLinkClick}>Cadastro</NavLink>
         </NavLinks>
       </Nav>
     </HeaderContainer>
