@@ -1,11 +1,11 @@
 // Home.js
-import React, { lazy, Suspense, useState } from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { lazy, Suspense, useState } from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Lazy load components
-const Testimonials = lazy(() => import('../components/Testimonials'));
+const Testimonials = lazy(() => import("../components/Testimonials"));
 
 // Styled components
 const HomeContainer = styled.div`
@@ -52,7 +52,7 @@ const NavLink = styled(Link)`
   text-decoration: none;
   font-weight: bold;
   font-size: 1rem;
-  
+
   &:hover {
     text-decoration: underline;
   }
@@ -87,13 +87,13 @@ const MobileMenu = styled(motion.div)`
 
 const MobileNavItem = styled(motion.div)`
   margin: 1rem 0;
-  
+
   a {
     color: ${({ theme }) => theme.colors.background};
     text-decoration: none;
     font-size: 1.2rem;
     transition: color 0.3s ease;
-    
+
     &:hover {
       color: ${({ theme }) => theme.colors.secondary};
     }
@@ -112,7 +112,8 @@ const CloseButton = styled.button`
 `;
 
 const HeroSection = styled.section`
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/path-to-your-optimized-image.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("/path-to-your-optimized-image.jpg");
   background-size: cover;
   background-position: center;
   min-height: 100vh;
@@ -283,14 +284,28 @@ function Home() {
       <Navbar>
         <Logo to="/">Lanchonete Gourmet</Logo>
         <NavList>
-          <NavItem><NavLink to="/">Home</NavLink></NavItem>
-          <NavItem><NavLink to="/menu">Menu</NavLink></NavItem>
-          <NavItem><NavLink to="/about">Sobre</NavLink></NavItem>
-          <NavItem><NavLink to="/contato">Contato</NavLink></NavItem>
-          <NavItem><NavLink to="/cadastro">Cadastro</NavLink></NavItem>
-          <NavItem><NavLink to="/login">Login</NavLink></NavItem>
+          <NavItem>
+            <NavLink to="/">Home</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink to="/menu">Menu</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink to="/about">Sobre</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink to="/contato">Contato</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink to="/cadastro">Cadastro</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink to="/login">Login</NavLink>
+          </NavItem>
         </NavList>
-        <MobileMenuButton onClick={toggleMobileMenu} aria-label="Abrir menu de navegação">
+        <MobileMenuButton
+          onClick={toggleMobileMenu}
+          aria-label="Abrir menu de navegação">
           ☰
         </MobileMenuButton>
       </Navbar>
@@ -301,17 +316,44 @@ function Home() {
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
-            transition={{ type: "tween" }}
-          >
-            <CloseButton onClick={toggleMobileMenu} aria-label="Fechar menu">×</CloseButton>
+            transition={{ type: "tween" }}>
+            <CloseButton onClick={toggleMobileMenu} aria-label="Fechar menu">
+              ×
+            </CloseButton>
             <MobileNavItem>
-              <NavLink to="/" onClick={toggleMobileMenu}>Home</NavLink>
+              <NavLink to="/" onClick={toggleMobileMenu}>
+                Home
+              </NavLink>
             </MobileNavItem>
             <MobileNavItem>
-              <NavLink to="/menu" onClick={toggleMobileMenu}>Menu</NavLink>
+              <NavLink to="/menu" onClick={toggleMobileMenu}>
+                Menu
+              </NavLink>
             </MobileNavItem>
             <MobileNavItem>
-              <NavLink to="/contato" onClick={toggleMobileMenu}>Contato</NavLink>
+              <NavLink to="/contato" onClick={toggleMobileMenu}>
+                Contato
+              </NavLink>
+            </MobileNavItem>
+            <MobileNavItem>
+              <NavLink to="/about" onClick={toggleMobileMenu}>
+                Sobre
+              </NavLink>
+            </MobileNavItem>
+            <MobileNavItem>
+              <NavLink to="/contato" onClick={toggleMobileMenu}>
+                Contato
+              </NavLink>
+            </MobileNavItem>
+            <MobileNavItem>
+              <NavLink to="/cadastro" onClick={toggleMobileMenu}>
+                Cadastro
+              </NavLink>
+            </MobileNavItem>
+            <MobileNavItem>
+              <NavLink to="/login" onClick={toggleMobileMenu}>
+                Login
+              </NavLink>
             </MobileNavItem>
           </MobileMenu>
         )}
@@ -321,15 +363,13 @@ function Home() {
         <HeroContent
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
+          transition={{ duration: 0.5 }}>
           <HeroTitle>Bem-vindo à Lanchonete Gourmet</HeroTitle>
           <HeroSubtitle>Sabores incríveis em cada mordida</HeroSubtitle>
           <CTAButton
             to="/menu"
             whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
+            whileTap={{ scale: 0.95 }}>
             Ver Menu
           </CTAButton>
         </HeroContent>
@@ -340,27 +380,37 @@ function Home() {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          Desde 2010, a Lanchonete Gourmet tem sido sinônimo de qualidade e inovação. 
-          Nossa missão é proporcionar uma experiência gastronômica única, 
-          combinando sabores tradicionais com toques modernos.
+          transition={{ duration: 0.5, delay: 0.2 }}>
+          Desde 2010, a Lanchonete Gourmet tem sido sinônimo de qualidade e
+          inovação. Nossa missão é proporcionar uma experiência gastronômica
+          única, combinando sabores tradicionais com toques modernos.
         </motion.p>
       </Section>
 
       <FeaturesSection>
         <SectionTitle>Nossos Diferenciais</SectionTitle>
         {[
-          { icon: "fas fa-utensils", title: "Culinária de Qualidade", description: "Ingredientes frescos e receitas exclusivas." },
-          { icon: "fas fa-clock", title: "Serviço Rápido", description: "Entrega rápida e atendimento eficiente." },
-          { icon: "fas fa-leaf", title: "Opções Saudáveis", description: "Pratos equilibrados e nutritivos." }
+          {
+            icon: "fas fa-utensils",
+            title: "Culinária de Qualidade",
+            description: "Ingredientes frescos e receitas exclusivas.",
+          },
+          {
+            icon: "fas fa-clock",
+            title: "Serviço Rápido",
+            description: "Entrega rápida e atendimento eficiente.",
+          },
+          {
+            icon: "fas fa-leaf",
+            title: "Opções Saudáveis",
+            description: "Pratos equilibrados e nutritivos.",
+          },
         ].map((feature, index) => (
           <FeatureCard
             key={index}
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-          >
+            transition={{ duration: 0.5, delay: index * 0.1 }}>
             <FeatureIcon className={feature.icon}></FeatureIcon>
             <FeatureTitle>{feature.title}</FeatureTitle>
             <p>{feature.description}</p>
@@ -372,20 +422,34 @@ function Home() {
         <SectionTitle>Promoções da Semana</SectionTitle>
         <PromotionGrid>
           {[
-            { title: "Combo Família", description: "4 hambúrgueres, 2 porções de batata frita e 4 refrigerantes", price: "R$ 89,90" },
-            { title: "Happy Hour", description: "Chopp em dobro das 17h às 20h", price: "A partir de R$ 9,90" },
-            { title: "Sobremesa Grátis", description: "Na compra de 2 pratos principais", price: "Economize até R$ 25,00" }
+            {
+              title: "Combo Família",
+              description:
+                "4 hambúrgueres, 2 porções de batata frita e 4 refrigerantes",
+              price: "R$ 89,90",
+            },
+            {
+              title: "Happy Hour",
+              description: "Chopp em dobro das 17h às 20h",
+              price: "A partir de R$ 9,90",
+            },
+            {
+              title: "Sobremesa Grátis",
+              description: "Na compra de 2 pratos principais",
+              price: "Economize até R$ 25,00",
+            },
           ].map((promo, index) => (
             <PromotionCard
               key={index}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ scale: 1.05 }}
-            >
+              whileHover={{ scale: 1.05 }}>
               <h3>{promo.title}</h3>
               <p>{promo.description}</p>
-              <p><strong>{promo.price}</strong></p>
+              <p>
+                <strong>{promo.price}</strong>
+              </p>
             </PromotionCard>
           ))}
         </PromotionGrid>
@@ -394,7 +458,11 @@ function Home() {
       <Section>
         <SectionTitle>Fique por dentro das novidades</SectionTitle>
         <NewsletterForm onSubmit={(e) => e.preventDefault()}>
-          <EmailInput type="email" placeholder="Seu e-mail" aria-label="Endereço de e-mail" />
+          <EmailInput
+            type="email"
+            placeholder="Seu e-mail"
+            aria-label="Endereço de e-mail"
+          />
           <SubmitButton type="submit">Inscrever-se</SubmitButton>
         </NewsletterForm>
       </Section>
