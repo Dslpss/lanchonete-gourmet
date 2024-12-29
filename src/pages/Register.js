@@ -1,25 +1,49 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { collection, addDoc } from 'firebase/firestore';
+import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
 import { db } from '../config/firebase';
 
 const Register = () => {
   const [formData, setFormData] = useState({
     nome: '',
     email: '',
+    password: '',
     telefone: '',
     endereco: ''
   });
 
+  const auth = getAuth();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await addDoc(collection(db, 'clientes'), formData);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        formData.email,
+        formData.password
+      );
+
+      await addDoc(collection(db, 'clientes'), {
+        userId: userCredential.user.uid,
+        nome: formData.nome,
+        email: formData.email,
+        telefone: formData.telefone,
+        endereco: formData.endereco,
+        createdAt: new Date()
+      });
+
       alert('Cliente cadastrado com sucesso!');
-      setFormData({ nome: '', email: '', telefone: '', endereco: '' });
+      setFormData({ 
+        nome: '', 
+        email: '', 
+        password: '', 
+        telefone: '', 
+        endereco: '' 
+      });
     } catch (error) {
       console.error('Erro ao cadastrar:', error);
-      alert('Erro ao cadastrar cliente');
+      alert('Erro ao cadastrar cliente: ' + error.message);
     }
   };
 
@@ -47,6 +71,14 @@ const Register = () => {
           name="email"
           placeholder="Email"
           value={formData.email}
+          onChange={handleChange}
+          required
+        />
+        <Input
+          type="password"
+          name="password"
+          placeholder="Senha"
+          value={formData.password}
           onChange={handleChange}
           required
         />
