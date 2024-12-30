@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-import { NavigationProvider } from "./context/NavigationContext";
+import { NavigationProvider } from "./contexts/NavigationContext";
 import GlobalStyles from "./styles/GlobalStyles";
 import { lightTheme, darkTheme } from "./styles/theme";
 import Header from "./components/Header";
