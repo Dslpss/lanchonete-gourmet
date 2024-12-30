@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { NavigationProvider } from "./contexts/NavigationContext";
+import { AuthProvider } from "./contexts/AuthContext";
 import GlobalStyles from "./styles/GlobalStyles";
 import { lightTheme, darkTheme } from "./styles/theme";
 import Header from "./components/Header";
@@ -24,20 +25,22 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <NavigationProvider>
-        <Router>
-          <Header toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/menu" element={<Menu />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
-          </Routes>
-          <Footer />
-        </Router>
-      </NavigationProvider>
+      <AuthProvider>
+        <NavigationProvider>
+          <Router>
+            <Header toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/menu" element={<Menu />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/login" element={<Login />} />
+            </Routes>
+            <Footer />
+          </Router>
+        </NavigationProvider>
+      </AuthProvider>
     </ThemeProvider>
   );
 }
