@@ -106,10 +106,27 @@ const Register = () => {
 
 const FormContainer = styled.div`
   max-width: 600px;
-  margin: 2rem auto;
-  padding: 2rem;
+  min-height: calc(100vh - 200px); // Altura da viewport menos header/footer
+  margin: 0 auto;
+  padding: 4rem 2rem;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  background: ${({ theme }) => theme.colors.background};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 3rem 1.5rem;
+    margin: 1rem;
+    min-height: calc(100vh - 150px);
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: 2rem 1rem;
+    margin: 0.5rem;
+    min-height: calc(100vh - 120px);
+  }
 `;
 
 const Form = styled.form`

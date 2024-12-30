@@ -1,98 +1,153 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FaFacebook, FaInstagram, FaWhatsapp } from 'react-icons/fa';
+import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
 
-
-function Footer() {
+const Footer = () => {
   return (
-    <FooterWrapper>
+    <FooterContainer>
       <FooterContent>
-        <FooterSection>
-          <SectionTitle>Sobre Nós</SectionTitle>
-          <p>Lanchonete Gourmet - Sabores incríveis em cada mordida.</p>
-        </FooterSection>
-
-        <FooterSection>
-          <SectionTitle>Horário de Funcionamento</SectionTitle>
-          <p>Segunda a Sexta: 11h às 23h</p>
-          <p>Sábado e Domingo: 11h às 00h</p>
-        </FooterSection>
-
-        <FooterSection>
-          <SectionTitle>Contato</SectionTitle>
-          <p>Tel: (11) 99999-9999</p>
-          <p>Email: contato@lanchonete.com</p>
-          <p>Endereço: Rua Example, 123</p>
-        </FooterSection>
-
-        <FooterSection>
-          <SectionTitle>Redes Sociais</SectionTitle>
-          <SocialLinks>
-            <SocialLink href="https://facebook.com" target="_blank">
-              <FaFacebook />
-            </SocialLink>
-            <SocialLink href="https://instagram.com" target="_blank">
-              <FaInstagram />
-            </SocialLink>
-            <SocialLink href="https://whatsapp.com" target="_blank">
-              <FaWhatsapp />
-            </SocialLink>
-          </SocialLinks>
-        </FooterSection>
+        <FooterLogo>Lanchonete Gourmet</FooterLogo>
+        <FooterLinks>
+          <FooterLink href="/">Home</FooterLink>
+          <FooterLink href="/menu">Menu</FooterLink>
+          <FooterLink href="/about">Sobre</FooterLink>
+          <FooterLink href="/contact">Contato</FooterLink>
+        </FooterLinks>
+        <FooterSocial>
+          <SocialIcon href="https://facebook.com">
+            <FaFacebookF />
+          </SocialIcon>
+          <SocialIcon href="https://twitter.com">
+            <FaTwitter />
+          </SocialIcon>
+          <SocialIcon href="https://instagram.com">
+            <FaInstagram />
+          </SocialIcon>
+        </FooterSocial>
       </FooterContent>
-      <Copyright>
-        © {new Date().getFullYear()} Lanchonete Gourmet. Todos os direitos reservados.
-      </Copyright>
-    </FooterWrapper>
+      <FooterBottom>
+        <FooterText>&copy; 2024 Lanchonete Gourmet. Todos os direitos reservados.</FooterText>
+      </FooterBottom>
+    </FooterContainer>
   );
-}
+};
 
-const FooterWrapper = styled.footer`
-  background-color: ${({ theme }) => theme.colors.primary};
-  color: ${({ theme }) => theme.colors.background};
-  padding: 3rem 2rem 1rem;
-`;
+const FooterContainer = styled.footer`
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.primary}, ${({ theme }) => theme.colors.secondary});
+  color: ${({ theme }) => theme.colors.text.primary};
+  padding: 2rem 1rem;
+  border-top: 1px solid ${({ theme }) => theme.colors.divider};
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
 
-const FooterContent = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-bottom: 2rem;
-`;
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 1.5rem 1rem;
+  }
 
-const FooterSection = styled.div`
-  text-align: left;
-`;
-
-const SectionTitle = styled.h3`
-  color: ${({ theme }) => theme.colors.secondary};
-  margin-bottom: 1rem;
-  font-size: 1.2rem;
-`;
-
-const SocialLinks = styled.div`
-  display: flex;
-  gap: 1rem;
-  margin-top: 0.5rem;
-`;
-
-const SocialLink = styled.a`
-  color: ${({ theme }) => theme.colors.background};
-  font-size: 1.5rem;
-  transition: color 0.3s ease;
-
-  &:hover {
-    color: ${({ theme }) => theme.colors.secondary};
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: 1rem 0.5rem;
   }
 `;
 
-const Copyright = styled.div`
+const FooterContent = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    flex-direction: column;
+    text-align: center;
+  }
+`;
+
+const FooterLogo = styled.h1`
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: ${({ theme }) => theme.colors.text.primary};
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    margin-bottom: 1rem;
+  }
+`;
+
+const FooterLinks = styled.div`
+  display: flex;
+  gap: 1.5rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    margin-bottom: 1rem;
+  }
+`;
+
+const FooterLink = styled.a`
+  color: ${({ theme }) => theme.colors.text.primary};
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.text.secondary};
+    text-decoration: underline;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: 0.875rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 0.75rem;
+  }
+`;
+
+const FooterSocial = styled.div`
+  display: flex;
+  gap: 1rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    justify-content: center;
+  }
+`;
+
+const SocialIcon = styled.a`
+  color: ${({ theme }) => theme.colors.text.primary};
+  font-size: 1.5rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.text.secondary};
+    transform: scale(1.1);
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: 1.25rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 1rem;
+  }
+`;
+
+const FooterBottom = styled.div`
   text-align: center;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  font-size: 0.9rem;
+  margin-top: 2rem;
+  font-size: 0.875rem;
+  color: ${({ theme }) => theme.colors.text.secondary};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    margin-top: 1.5rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    margin-top: 1rem;
+  }
+`;
+
+const FooterText = styled.p`
+  margin: 0;
 `;
 
 export default Footer;

@@ -1,4 +1,3 @@
-// Menu.js
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
@@ -8,12 +7,40 @@ const MenuContainer = styled.div`
   max-width: 1200px;
   margin: 6rem auto 2rem;
   padding: 0 2rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 0 1rem;
+  }
 `;
 
 const MenuTitle = styled.h1`
   text-align: center;
   color: ${({ theme }) => theme.colors.primary};
   margin-bottom: 2rem;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  position: relative;
+
+  &::after {
+    content: '';
+    width: 50px;
+    height: 4px;
+    background-color: ${({ theme }) => theme.colors.secondary};
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: 2rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 1.5rem;
+  }
 `;
 
 const MenuSection = styled.section`
@@ -34,7 +61,7 @@ const MenuGrid = styled.div`
 `;
 
 const MenuItem = styled(motion.div)`
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.surface};
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -52,12 +79,13 @@ const ItemContent = styled.div`
 
 const ItemName = styled.h3`
   margin-bottom: 0.5rem;
+  color: ${({ theme }) => theme.colors.text.primary};
 `;
 
 const ItemDescription = styled.p`
   font-style: italic;
   margin-bottom: 1rem;
-  color: ${({ theme }) => theme.colors.text}aa;
+  color: ${({ theme }) => theme.colors.text.secondary};
 `;
 
 const ItemPrice = styled.span`

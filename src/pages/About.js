@@ -73,9 +73,13 @@ const AboutContainer = styled.div`
   max-width: 1200px;
   margin: 6rem auto 2rem;
   padding: 2rem;
-  background: white;
+  background: ${({ theme }) => theme.colors.background};
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 1rem;
+  }
 `;
 
 const AboutTitle = styled.h1`
@@ -84,6 +88,14 @@ const AboutTitle = styled.h1`
   margin-bottom: 3rem;
   font-size: 2.5rem;
   font-weight: bold;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: 2rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 1.5rem;
+  }
 `;
 
 const AboutContent = styled.div`
@@ -92,7 +104,7 @@ const AboutContent = styled.div`
   gap: 4rem;
   align-items: center;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
@@ -118,11 +130,19 @@ const AboutImage = styled.img`
 const AboutText = styled.div`
   font-size: 1.1rem;
   line-height: 1.8;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: 1rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 0.875rem;
+  }
 `;
 
 const Paragraph = styled.p`
   margin-bottom: 1.5rem;
-  color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.text.primary};
 `;
 
 const ValuesSection = styled.section`
@@ -136,6 +156,14 @@ const ValuesTitle = styled.h2`
   margin-bottom: 2rem;
   font-size: 2rem;
   text-align: center;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: 1.75rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 1.5rem;
+  }
 `;
 
 const ValuesList = styled.ul`
@@ -151,10 +179,10 @@ const ValueItem = styled(motion.li)`
   display: flex;
   align-items: center;
   gap: 1rem;
-  background: ${({ theme }) => theme.colors.primary}10;
+  background: ${({ theme }) => theme.colors.surface};
   border-radius: 8px;
   font-size: 1.1rem;
-  color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.text.primary};
   cursor: pointer;
 
   svg {
@@ -163,7 +191,15 @@ const ValueItem = styled(motion.li)`
   }
 
   &:hover {
-    background: ${({ theme }) => theme.colors.primary}20;
+    background: ${({ theme }) => theme.colors.surfaceHover};
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: 1rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 0.875rem;
   }
 `;
 

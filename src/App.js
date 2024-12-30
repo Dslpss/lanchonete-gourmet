@@ -1,10 +1,9 @@
-// App.js
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { NavigationProvider } from "./context/NavigationContext";
 import GlobalStyles from "./styles/GlobalStyles";
-import theme from "./styles/theme";
+import { lightTheme, darkTheme } from "./styles/theme";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -15,12 +14,19 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 
 function App() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const theme = isDarkMode ? darkTheme : lightTheme;
+
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <NavigationProvider>
         <Router>
-          <Header />
+          <Header toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/menu" element={<Menu />} />

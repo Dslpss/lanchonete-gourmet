@@ -40,16 +40,31 @@ const Contact = () => {
 const ContactContainer = styled.div`
   max-width: 800px;
   margin: 0 auto;
-  padding: 20px;
-  background: #fff;
+  padding: 70px;
+  background: ${({ theme }) => theme.colors.background};
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 10px;
+  }
 `;
 
 const ContactTitle = styled.h1`
   text-align: center;
   color: ${({ theme }) => theme.colors.primary};
   margin-bottom: 20px;
+  word-wrap: break-word; /* Adiciona quebra de linha para palavras longas */
+  overflow-wrap: break-word; /* Adiciona quebra de linha para palavras longas */
+  white-space: normal; /* Garante que o texto seja quebrado em várias linhas, se necessário */
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: 2rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 1.5rem;
+  }
 `;
 
 const ContactInfo = styled.div`
@@ -64,7 +79,15 @@ const InfoItem = styled.p`
   align-items: center;
   gap: 10px;
   font-size: 1rem;
-  color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.text.primary};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: 0.875rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 0.75rem;
+  }
 `;
 
 const ContactForm = styled.form`
@@ -75,6 +98,17 @@ const FormTitle = styled.h2`
   text-align: center;
   color: ${({ theme }) => theme.colors.primary};
   margin-bottom: 20px;
+  word-wrap: break-word; /* Adiciona quebra de linha para palavras longas */
+  overflow-wrap: break-word; /* Adiciona quebra de linha para palavras longas */
+  white-space: normal; /* Garante que o texto seja quebrado em várias linhas, se necessário */
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: 1.75rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 1.5rem;
+  }
 `;
 
 const FormGroup = styled.div`
@@ -86,22 +120,50 @@ const Label = styled.label`
   margin-bottom: 5px;
   font-weight: bold;
   color: ${({ theme }) => theme.colors.primary};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: 0.875rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 0.75rem;
+  }
 `;
 
 const Input = styled.input`
   width: 100%;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid ${({ theme }) => theme.colors.divider};
   border-radius: 4px;
   font-size: 1rem;
+  background-color: ${({ theme }) => theme.colors.surface};
+  color: ${({ theme }) => theme.colors.text.primary};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: 0.875rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 0.75rem;
+  }
 `;
 
 const TextArea = styled.textarea`
   width: 100%;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid ${({ theme }) => theme.colors.divider};
   border-radius: 4px;
   font-size: 1rem;
+  background-color: ${({ theme }) => theme.colors.surface};
+  color: ${({ theme }) => theme.colors.text.primary};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: 0.875rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 0.75rem;
+  }
 `;
 
 const SubmitButton = styled.button`
@@ -116,6 +178,14 @@ const SubmitButton = styled.button`
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.secondary};
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: 0.875rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 0.75rem;
   }
 `;
 

@@ -6,7 +6,7 @@ import { useAuth } from '../context/AuthContext';
 import { getAuth, signOut } from 'firebase/auth';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
-const Header = () => {
+const Header = ({ toggleTheme, isDarkMode }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const { currentUser } = useAuth();
@@ -80,6 +80,9 @@ const Header = () => {
             </>
           )}
         </NavLinks>
+        <ThemeToggle onClick={toggleTheme}>
+          {isDarkMode ? '🌞' : '🌜'}
+        </ThemeToggle>
       </Nav>
       <AnimatePresence>
         {showPopup && (
@@ -119,7 +122,7 @@ const Nav = styled.nav`
 `;
 
 const Logo = styled(Link)`
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: bold;
   color: ${props => props.theme.colors.primary};
   text-decoration: none;
@@ -241,6 +244,15 @@ const Popup = styled.div`
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 1100;
+`;
+
+const ThemeToggle = styled.button`
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: ${props => props.theme.colors.primary};
+  margin-left: 1rem;
 `;
 
 export default Header;
